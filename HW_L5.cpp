@@ -4,6 +4,7 @@
 #include<set>
 #include"MyLib.h"
 #include"Task1.h"
+#include"Task2.h"
 #include"Task4.h"
 
 using namespace std;
@@ -20,8 +21,11 @@ void Task1()
 
 void Task2()
 {
-	cout << "Поиск кол-ва различных элементов: " << endl;
-	
+	cout << "Работа с шаблонным классом Pair:" << endl;
+	Pair<int, double> p1(6, 7.8);
+	cout << "Pair: " << p1.first() << ' ' << p1.second() << '\n';
+	const Pair<double, int> p2(3.4, 5);
+	cout << "Pair: " << p2.first() << ' ' << p2.second() << '\n';
 }
 
 
