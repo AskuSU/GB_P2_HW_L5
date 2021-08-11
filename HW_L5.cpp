@@ -5,6 +5,7 @@
 #include"MyLib.h"
 #include"Task1.h"
 #include"Task2.h"
+#include"Task3.h"
 #include"Task4.h"
 
 using namespace std;
@@ -31,6 +32,13 @@ void Task2()
 
 void Task3()
 {
+	cout << "Работа с шаблонным классом Pair:" << endl;
+	StringValuePair<int> svp("Amazing", 7);
+	std::cout << "Pair: " << svp.first() << ' ' << svp.second() << '\n';
+}
+
+void Task4()
+{
 	cout << "\t\tСыграем в Blackjack!\n\n" << endl << endl;
 	int numPlayers = 0;
 	while (numPlayers < 1 || numPlayers > 7)
@@ -42,7 +50,7 @@ void Task3()
 	string name;
 	for (int i = 0; i < numPlayers; ++i)
 	{
-		cout << "Введите имя "<< i + 1 << " игрока: ";
+		cout << "Введите имя " << i + 1 << " игрока: ";
 		name = getUserInputTxt();
 		names.push_back(name);
 	}
@@ -56,11 +64,6 @@ void Task3()
 		cout << "\nХотите сыграть заново? (Y/N): ";
 		cin >> again;
 	}
-}
-
-void Task4()
-{
-
 }
 
 
