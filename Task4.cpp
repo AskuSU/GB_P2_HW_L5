@@ -1,3 +1,4 @@
+#include<iostream>
 #include"Task4.h"
 
 Rank operator++(Rank& den) { return den = (Rank)(std::underlying_type<Rank>::type(den) + 1); };
@@ -48,20 +49,15 @@ Deck::Deck()
 			cards[(int)i - 1][(int)j - 1].SetValue(j, i);
 		}
 	}
-};
+}
 
 Game::Game(const std::vector<std::string>& names)
 {
-};
+}
 
 void Game::Play()
 {
-};
-
-bool House::IsHitting() const
-{
-	return false;
-};
+}
 
 Hand::Hand()
 {
@@ -87,7 +83,7 @@ void Hand::Clear()
 	cards.clear();
 }
 
-uint16_t Hand::GetTotal()
+uint16_t Hand::GetTotal() const
 {
 	// если карт в руке нет, возвращает значение 0
 	if (cards.empty())
@@ -120,4 +116,20 @@ uint16_t Hand::GetTotal()
 		total += 10;
 	}
 	return total;
+}
+
+GenericPlayer::GenericPlayer(const std::string& name) : name(name)
+{}
+bool GenericPlayer::IsBoosted() const
+{
+	return (GetTotal() > 21);
+}
+void GenericPlayer::Bust() const
+{
+	std::cout << name << " перебор" << std::endl;
+}
+
+bool House::IsHitting() const
+{
+	return false;
 }

@@ -53,9 +53,9 @@ public:
 	Hand();
 	virtual ~Hand();
 	
-	void Add(Card* pCard);	//Добавляет карту в руку. Добавляет указатель на объект типа Сard в вектор cards
-	void Clear();			//Очищает руку от карт. Удаляет все указатели из вектора cards, устраняя все связанные с ними объекты в куче
-	uint16_t GetTotal();			//Возвращает сумму очков карт руки, присваивая тузу значение 1 или 11 в зависимости от ситуации
+	void Add(Card* pCard);		//Добавляет карту в руку. Добавляет указатель на объект типа Сard в вектор cards
+	void Clear();				//Очищает руку от карт. Удаляет все указатели из вектора cards, устраняя все связанные с ними объекты в куче
+	uint16_t GetTotal() const;	//Возвращает сумму очков карт руки, присваивая тузу значение 1 или 11 в зависимости от ситуации
 
 private:
 	std::vector<Card*> cards;
@@ -111,8 +111,14 @@ private:
 class GenericPlayer : public Hand
 {
 public:
+	GenericPlayer(const std::string& name = "");
+	virtual ~GenericPlayer() = default;
+	
+	// показывает, хочет ли игрок продолжать брать карты
 	virtual bool IsHitting() const = 0;
+	// возвращает значение, если у игрока перебор
 	bool IsBoosted() const;
+	// объявляет, что игрок имеет перебор
 	void Bust() const;
 
 private:
@@ -123,7 +129,7 @@ private:
 class Player : public GenericPlayer
 {
 public:
-	virtual bool IsHitting() const;
+	virtual bool IsHitting() const override;
 	void Win() const;
 	void Lose() const;
 	void Push() const;
@@ -134,7 +140,7 @@ private:
 class House : public GenericPlayer
 {
 public:
-	virtual bool IsHitting() const;
+	virtual bool IsHitting() const override;
 	void FlipFirstCard();
 private:
 
